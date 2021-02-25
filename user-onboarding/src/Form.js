@@ -39,6 +39,14 @@ export default function UserForm(props){
                         type='text'
                     />
                 </label>
+                <label>Password
+                    <input
+                        value={values.password}
+                        onChange={onChange}
+                        name='password'
+                        type='text'
+                    />
+                </label>
                 <label>Terms of Service
                     <input 
                         type='checkbox'
