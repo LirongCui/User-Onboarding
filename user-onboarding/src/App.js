@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from 'react'
 import UserForm from './Form'
+import User from './User'
 import axios from 'axios'
 import * as yup from 'yup'
 import formSchema from './validation/formSchema'
@@ -32,7 +33,7 @@ function App() {
   const getUsers = () => {
     axios.get('https://reqres.in/api/users')
       .then(res =>{
-        setUsers(res.data)
+        setUsers([res.data, ...users])
       })
   }
 
@@ -72,9 +73,7 @@ function App() {
     postNewUser(newUser)
   }
 
-  useEffect(() =>{
-    getUsers()
-  }, [])
+
 
   useEffect(() => {
     formSchema.isValid(formValues).then(valid => setDisabled(!valid))
@@ -92,6 +91,14 @@ function App() {
         disabled={disabled}
         errors={formErrors}
       />
+
+      {
+        users.map(user => {
+          return(
+            <User key={user.id} details={user}/>
+          )
+        })
+      }
     </div>
   )
 }

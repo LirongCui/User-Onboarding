@@ -21,7 +21,7 @@ export default function UserForm(props){
     }
 
     return (
-        <form className='form-container' onsubmit={onSubmit}>
+        <form className='form-container' onSubmit={onSubmit}>
             <div className='form-inputs'>
                 <h2>New User</h2>
                 <label>Username:
